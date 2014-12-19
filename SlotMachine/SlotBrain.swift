@@ -56,6 +56,16 @@ class SlotBrain {
                 println("Epic Straight")
                 winnings += 1000
             }
+            
+            if checkThreeOfAKind(slotRow) {
+                println("three of a kind")
+                winnings += 3
+                threeOfAKindWinCount++
+            }
+            if threeOfAKindWinCount == 3 {
+                println("Threes all around")
+                winnings += 50
+            }
         }
         return winnings
     }
@@ -80,6 +90,17 @@ class SlotBrain {
         if one.value == two.value - 1 && one.value == three.value - 2 {
                 return true
         }else if one.value == two.value + 1 && one.value == three.value + 2 {
+            return true
+        }
+        return false
+    }
+    
+    class func checkThreeOfAKind (slotRow:[Slot]) -> Bool {
+        let one = slotRow[0]
+        let two = slotRow[1]
+        let three = slotRow[2]
+        
+        if one.value == two.value && one.value == three.value {
             return true
         }
         return false
