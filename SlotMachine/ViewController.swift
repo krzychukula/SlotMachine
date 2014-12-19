@@ -69,6 +69,14 @@ class ViewController: UIViewController {
         println("betOneButtonPressed")
     }
     
+    func betMaxButtonPressed(button:UIButton){
+        println("bet max")
+    }
+    
+    func spinButtonPressed(button:UIButton){
+        println("spin")
+    }
+    
     func setupContainerViews(){
         self.firstContainer = UIView(frame: CGRect(
             x: self.view.bounds.origin.x + kMarginForView,
@@ -215,6 +223,26 @@ class ViewController: UIViewController {
         betOneButton.center = CGPoint(x: containerView.frame.width * 3 * kEight, y: containerView.frame.height * kHalf)
         betOneButton.addTarget(self, action: "betOneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         containerView.addSubview(betOneButton)
+        
+        betMaxButton = UIButton()
+        betMaxButton.setTitle("BetMax", forState: UIControlState.Normal)
+        betMaxButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        betMaxButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold", size: 12)
+        betMaxButton.backgroundColor = UIColor.redColor()
+        betMaxButton.sizeToFit()
+        betMaxButton.center = CGPoint(x: containerView.frame.width * 5 * kEight, y: containerView.frame.height * kHalf)
+        betMaxButton.addTarget(self, action: "betMaxButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        containerView.addSubview(betMaxButton)
+        
+        spinButton = UIButton()
+        spinButton.setTitle("Spin", forState: UIControlState.Normal)
+        spinButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        spinButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold", size: 12)
+        spinButton.backgroundColor = UIColor.greenColor()
+        spinButton.sizeToFit()
+        spinButton.center = CGPoint(x: containerView.frame.width * 7 * kEight, y: containerView.frame.height * kHalf)
+        spinButton.addTarget(self, action: "spinButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        containerView.addSubview(spinButton)
     }
     
 
