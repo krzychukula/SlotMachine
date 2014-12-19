@@ -14,16 +14,23 @@ class ViewController: UIViewController {
     var secondContainer: UIView!
     var thirdContainer: UIView!
     var fourthContainer: UIView!
-    
+    //1
     var titleLabel: UILabel!
-    
+    //3
     var creditsLabel: UILabel!
     var betLabel: UILabel!
     var winnerPaidLabel: UILabel!
     var creditsTitleLabel: UILabel!
     var betTitleLabel: UILabel!
     var winnerPaidTitleLabel: UILabel!
+    //4
+    var resetButton: UIButton!
+    var betOneButton: UIButton!
+    var betMaxButton: UIButton!
+    var spinButton: UIButton!
     
+    
+    //consts
     let kMarginForView: CGFloat = 10.0
     let kSixth:CGFloat = 1.0/6.0
     
@@ -31,6 +38,10 @@ class ViewController: UIViewController {
     let kNumberOfSlots = 3
     let kThird:CGFloat = 1.0/3.0
     let kMarginForSlots:CGFloat = 2.0
+    
+    
+    let kHalf:CGFloat = 1.0/2.0
+    let kEight:CGFloat = 1.0/8.0
     
 
     override func viewDidLoad() {
@@ -41,11 +52,21 @@ class ViewController: UIViewController {
         setupFirstContainer(self.firstContainer)
         setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
+        setupFourthContainer(self.fourthContainer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //IBActions
+    func resetButtonPressed(button: UIButton){
+        println("resetButtonPressed")
+    }
+    
+    func betOneButtonPressed(button: UIButton){
+        println("betOneButtonPressed")
     }
     
     func setupContainerViews(){
@@ -172,5 +193,31 @@ class ViewController: UIViewController {
         containerView.addSubview(winnerPaidTitleLabel)
     }
 
+    
+    func setupFourthContainer(containerView: UIView){
+        resetButton = UIButton()
+        resetButton.setTitle("Reset", forState: UIControlState.Normal)
+        resetButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        resetButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold", size: 12)
+        resetButton.backgroundColor = UIColor.lightGrayColor()
+        resetButton.sizeToFit()
+        resetButton.center = CGPoint(x: containerView.frame.width * kEight,
+            y: containerView.frame.height * kHalf)
+        resetButton.addTarget(self, action: "resetButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        containerView.addSubview(self.resetButton)
+        
+        betOneButton = UIButton()
+        betOneButton.setTitle("Bet One", forState: UIControlState.Normal)
+        betOneButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        betOneButton.titleLabel?.font = UIFont(name: "Superclarendenon-Bold", size: 12)
+        betOneButton.backgroundColor = UIColor.greenColor()
+        betOneButton.sizeToFit()
+        betOneButton.center = CGPoint(x: containerView.frame.width * 3 * kEight, y: containerView.frame.height * kHalf)
+        betOneButton.addTarget(self, action: "betOneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        containerView.addSubview(betOneButton)
+    }
+    
+
+    
 }
 
