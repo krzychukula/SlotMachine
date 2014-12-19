@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     let kHalf:CGFloat = 1.0/2.0
     let kEight:CGFloat = 1.0/8.0
     
+    //model
+    var slots:[[Slot]] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +78,9 @@ class ViewController: UIViewController {
     
     func spinButtonPressed(button:UIButton){
         println("spin")
+        
+        slots = Factory.createSlots()
+        setupSecondContainer(self.secondContainer)
     }
     
     func setupContainerViews(){
