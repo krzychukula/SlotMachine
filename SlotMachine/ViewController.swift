@@ -79,6 +79,7 @@ class ViewController: UIViewController {
     func spinButtonPressed(button:UIButton){
         println("spin")
         
+        removeSlotImageViews()
         slots = Factory.createSlots()
         setupSecondContainer(self.secondContainer)
     }
@@ -262,7 +263,15 @@ class ViewController: UIViewController {
         containerView.addSubview(spinButton)
     }
     
-
+    func removeSlotImageViews(){
+        if self.secondContainer != nil {
+            let container:UIView = self.secondContainer
+            let subViews:Array? = container.subviews
+            for view in subViews! {
+                view.removeFromSuperview()
+            }
+        }
+    }
     
 }
 
