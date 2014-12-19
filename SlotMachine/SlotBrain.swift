@@ -37,8 +37,28 @@ class SlotBrain {
         var threeOfAKindWinCount = 0
         var straightWinCount = 0
         for slotRow in slotsInRows {
-            
+            if checkFlush(slotRow) {
+                println("flush")
+                winnings++
+                flushWinCount++
+            }
+            if flushWinCount == 3 {
+                println("Royal Flush")
+                winnings += 15
+            }
         }
         return winnings
+    }
+    
+    class func checkFlush(slotRow:[Slot]) -> Bool {
+        let one = slotRow[0]
+        let two = slotRow[1]
+        let three = slotRow[2]
+        if one.isRed && two.isRed && three.isRed {
+            return true
+        }else if !one.isRed && !two.isRed && !three.isRed {
+            return true
+        }
+        return false
     }
 }
