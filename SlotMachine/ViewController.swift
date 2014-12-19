@@ -129,7 +129,18 @@ class ViewController: UIViewController {
     func setupSecondContainer(containerView:UIView){
         for var containerNumber = 0; containerNumber < kNumberOfContainers; ++containerNumber {
             for var slotNumber = 0; slotNumber < kNumberOfSlots; ++slotNumber {
+                
+                var slot:Slot
                 var slotImageView = UIImageView()
+                
+                if slots.count != 0 {
+                    let slotContainer = slots[containerNumber]
+                    slot = slotContainer[slotNumber]
+                    slotImageView.image = slot.image
+                }else{
+                    slotImageView.image = UIImage(named: "Ace")
+                }
+
                 slotImageView.backgroundColor = UIColor.yellowColor()
                 slotImageView.frame = CGRect(
                     x: containerView.bounds.origin.x + (containerView.bounds.size.width * CGFloat(containerNumber) * kThird),
